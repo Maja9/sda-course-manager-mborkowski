@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {LessonService} from "../../lessons/lesson.service";
 import {User} from "../../users/user";
 import {UserService} from "../../users/user.service";
@@ -15,7 +15,7 @@ export class AssignTeacherComponent implements OnInit {
   public lessonBlockId: number;
   public teachers: User[];
 
-  constructor(private route: ActivatedRoute, private lessonService: LessonService,
+  constructor(private router: Router, private route: ActivatedRoute, private lessonService: LessonService,
               private userService: UserService) { }
 
   ngOnInit(): void {
@@ -27,5 +27,11 @@ export class AssignTeacherComponent implements OnInit {
 
   onSubmit() {
     this.lessonService.assignTeacher(this.teacherId, this.lessonBlockId);
+    this.gotoUserList();
   }
+
+  gotoUserList() {
+    this.router.navigate(['/courses']);
+  }
+
 }
