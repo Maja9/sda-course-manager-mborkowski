@@ -16,5 +16,6 @@ export class LessonService {
       let body = {subject: block.subject, teacherId: teacherId};
       this.http.put("/api/lessonblocks/" + lessonBlockId, body, {headers: headers}).subscribe();
     });
+
   }
 }
