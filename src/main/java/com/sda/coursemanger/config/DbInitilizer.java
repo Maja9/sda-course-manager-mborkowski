@@ -50,7 +50,10 @@ public class DbInitilizer implements CommandLineRunner {
     public void run(String... args) {
         flushDatabase();
         if (userRepository.count() == 0) {
-            User participant = initUser("user", "pass", Role.PARTICIPANT);
+
+
+            User participant = initUser("single_user", "pass", Role.PARTICIPANT);
+
 
             IntStream.range(0, 5).forEach(i -> {
                 initUser("participant-"+i, "pass", Role.PARTICIPANT);
@@ -61,7 +64,6 @@ public class DbInitilizer implements CommandLineRunner {
             initCourse("testing for dummies");
             initCourse("cloud computing");
             initCourse("artificial intelligence");
-
 
             Course javaCourse = initCourse("java basics");
 
